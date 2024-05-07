@@ -18,7 +18,7 @@ fetch(BASE_URL + 'pokemon/ditto')
 
 const fetchPokemon = async (pokemon) => {
     try {
-        const response = await fetch(`${URL_BASE}pokemon/${pokemon}/`);
+        const response = await fetch(`${URL_BASE}pokemon/${pokemon}`);
         const parsedResponse = await response.json();
         return parsedResponse;
     } catch (err) {
@@ -26,34 +26,25 @@ const fetchPokemon = async (pokemon) => {
     }
 }
 
-//*
- Obtener pokemon
+//* Obtener pokemon
 document.getElementById('get-btn')
     .addEventListener('click', async () => {
-        const text = document.getElementById('poke-name').value.toLowerCase();
+        const text = document.getElementById('name-pokemon').value.toLowerCase();
         const pokemon = await fetchPokemon(text);
         localStorage.setItem('pokeId', pokemon.id);
         localStorage.setItem('name', pokemon.name);
         localStorage.setItem('weight', pokemon.weight);
         localStorage.setItem('height', pokemon.height);
-        localStorage.setItem('type', pokemon.types);
+        localStorage.setItem('type', pokemon.type);
         console.log(pokemon.name);
-        console.log(pokemon.id);
-        console.log(pokemon.weight);
-        console.log(pokemon.height);
-        console.log(pokemon.types);
         createCard(pokemon);
     })
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const storedId = localStorage.getItem('pokeId');
+    const storedId = localStorage.getItem('actualPokeId');
     const initialId = storedId ? parseInt(storedId) : 1;
     const pokemon = await fetchPokemon(initialId);
     console.log(pokemon.name);
-    console.log(pokemon.id);
-    console.log(pokemon.weight);
-    console.log(pokemon.height);
-    console.log(pokemon.types);
     createCard(pokemon);
 })
 
@@ -67,11 +58,7 @@ document.getElementById('previous-btn')
         const pokemon = await fetchPokemon(newId);
         localStorage.setItem('actualPokeId', newId);
         console.log(pokemon.name);
-        console.log(pokemon.id);
-        console.log(pokemon.weight);
-        console.log(pokemon.height);
-        console.log(pokemon.types);
-    })
+    });
 
 //* Pokemon siguiente
 
@@ -85,23 +72,49 @@ document.getElementById('next-btn')
         console.log(pokemon.id);
         console.log(pokemon.weight);
         console.log(pokemon.height);
-        console.log(pokemon.types);
-        console.log(pokemon.sprite);
-    })
+        console.log(pokemon.type);
+    });
 
 //*Pokemon Card
-
-const createCard = (pokemon) => {
-    const cardContainer = document.getElementById('card-container');
+// Creación de la tarjeta
+const infoPokemonCard = (pokemon) => {
+    const cardDisplay = document.getElementById('card-container');
     const card = document.createElement('div');
-    const png = document.createElement('png');
-    const name = document.createElement('p');
+    const img = document.createElement('img');
+    const name = document.createElement('h3');
     const id = document.createElement('p');
     const weight = document.createElement('p');
     const height = document.createElement('p');
-    const types = document.createElement('p');
-}
+    const type = document.createElement('p');
 
+    //* Class
+    card.classList.add("poke-card");
+    img.classList.add("poke-img");
+    name.classList.add("poke-name");
+    id.classList.add("poke-id");
+    weight.classList.add("poke.weight");
+    height.classList.add("poke-height");
+    type.classList.add("poke-type");
+
+    //* Data
+    img.src = pokemon.sprites.front_default;
+    name.textContent = `Name: ${pokemon.name}`;
+    id.textContent = `Id: ${pokemon.id}`;
+    weight.textContent = `Weight:  ${pokemon.weight} lb.`;
+    height.textContent = `Height:  ${pokemon.height} ft.`;
+    type.textContent = `Type: ${pokemon.type}`;
+
+    //* Display
+    card.appendChild(img);
+    card.appendChild(name);
+    card.appendChild(id);
+    card.appendChild(weight);
+    card.appendChild(height);
+    card.appendChild(type);
+
+    cardDisplay.innerHTML = " ";
+    cardDisplay.appendChild(card);
+}
 
 // fetch('https://jsonplaceholder.typicode.com/posts', {
 //    method: 'POST',

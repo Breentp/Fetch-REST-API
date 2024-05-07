@@ -9,22 +9,33 @@
 </head>
 
 <body>
-    <button id='btn-counter'>Counter ++</button>
-    <p id='counter'></p>
+    <!-- <button id='btn-counter'>Counter ++</button>
+    <p id='counter'></p> -->
 
     <div class="container">
-        <div class="card--container">
+        <div class="card-container">
         </div>
 
         <div class="container row">
-            <label for="poke-name">Pokemon (Name / Id)</label>
-            <input id='poke-name' type="text" name="poke-name" value="">
+            <label for="name-pokemon">Enter Pokemon name or Id: </label>
+            <input id='name-pokemon' type="text" name="name-pokemon" value="">
         </div>
 
         <div class='container row'>
            <button id='previous-btn' class='btn primary'>Previous</button> 
-           <button id='get-btn' class='btn primary'>Get Pokemon</button> 
+           <button id='get-btn' class='btn primary'>Search Pokemon</button> 
            <button id='next-btn' class='btn primary'>Next</button> 
+        </div>
+    </div>
+
+    <div id="card-container">
+        <div class="poke-card">
+            <img id="poke-img" src="" alt="Pokemon">
+            <h3 id="poke-name">Name: </h3>
+            <p id="poke-id">Id: </p>
+            <p id="poke-weight">Weight: </p>
+            <p id="poke-height">Height: </p>
+            <p id="poke-type">Type: </p>
         </div>
     </div>
 </body>
