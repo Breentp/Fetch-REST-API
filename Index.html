@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio Pokedex JS - 08</title>
     <script src="./JS_08.js" async defer></script>
+    <link rel='stylesheet' href='./Styles.css'>
 </head>
+
 <body>
-    
+    <button id='btn-counter'>Counter ++</button>
+    <p id='counter'></p>
+
+    <div class="container">
+        <div class="card--container">
+        </div>
+
+        <div class="container row">
+            <label for="poke-name">Pokemon (Name / Id)</label>
+            <input id='poke-name' type="text" name="poke-name" value="">
+        </div>
+
+        <div class='container row'>
+           <button id='previous-btn' class='btn primary'>Previous</button> 
+           <button id='get-btn' class='btn primary'>Get Pokemon</button> 
+           <button id='next-btn' class='btn primary'>Next</button> 
+        </div>
+    </div>
 </body>
 </html>

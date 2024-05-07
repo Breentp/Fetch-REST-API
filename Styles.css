@@ -1,0 +1,46 @@
+body {
+    margin: 1;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: pink;
+    color:saddlebrown;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+}
+
+.row {
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+    width: 100%;
+}
+
+.btn {
+    background-color:darkseagreen;
+    border: 0.5px solid grey;
+    border-radius: .25rem;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    min-width: 110px;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: rgb(238, 237, 160);
+    box-shadow: rgba(47, 46, 46, 0.1) 0 4px 12px;
+}
